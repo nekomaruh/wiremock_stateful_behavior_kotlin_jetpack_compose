@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">wiremock_stages_compose</string>
+    <string name="title_activity_stage">StageActivity</string>
+</resources>

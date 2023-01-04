@@ -1,0 +1,27 @@
+{
+  "scenarioName": "PULL_SCENARIO",
+  "requiredScenarioState": "VALIDATED_8",
+  "newScenarioState": "VALIDATED_9",
+  "request": {
+    "urlPathPattern": "/api/pull/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+    "method": "GET",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json",
+        "caseInsensitive": true
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+        "content": "Pull 9",
+        "status": "VALIDATED"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "fixedDelayMilliseconds": 0
+  }
+}
+
