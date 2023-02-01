@@ -10,4 +10,6 @@ class RepositoryImpl(private val apiService: ApiService) : Repository {
         return apiService.pull(request.paymentCode)
     }
 
+    override suspend fun reset(): Boolean = apiService.reset().isSuccessful
+
 }

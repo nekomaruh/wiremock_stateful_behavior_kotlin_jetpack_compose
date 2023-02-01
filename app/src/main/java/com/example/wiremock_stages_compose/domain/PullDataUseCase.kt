@@ -1,6 +1,7 @@
 package com.example.wiremock_stages_compose.domain
 
-import com.example.wiremock_stages_compose.data.model.Result
+import android.util.Log
+import com.example.wiremock_stages_compose.domain.model.Result
 import com.example.wiremock_stages_compose.data.remote.mapper.toDomain
 import com.example.wiremock_stages_compose.data.remote.repository.Repository
 import com.example.wiremock_stages_compose.domain.mapper.toRemote
@@ -14,8 +15,9 @@ import kotlinx.coroutines.flow.flow
 const val DELAY_MILLIS = 1000L
 const val RETRIES = 20
 
-class PullUseCase(private val repository: Repository) :
-    UseCase<String, Result<PullResponse>>() {
+class PullDataUseCase(
+    private val repository: Repository
+) : BaseUseCaseFlow<String, Result<PullResponse>>() {
 
     private var lastStatus = "Unknown"
 
@@ -23,19 +25,20 @@ class PullUseCase(private val repository: Repository) :
         check(params != null) { throw IllegalArgumentException() }
         var attempt = 1
 
-        return flow<Result<PullResponse>>  {
+        return flow<Result<PullResponse>> {
             do {
                 val pullRequest = PullRequest(params)
                 val pullResponse = repository.pull(pullRequest.toRemote())
                 val status = pullResponse.status
                 if (lastStatus != status) {
-                    emit(Result.OnSuccess(pullResponse.toDomain()))
+                    emit(Result.Success(pullResponse.toDomain()))
                     lastStatus = status
                 }
+                Log.i("PULL ATTEMPT", "$attempt -> $lastStatus")
                 delay(DELAY_MILLIS)
             } while (attempt++ < RETRIES)
         }.catch { error ->
-            emit(Result.OnError(error))
+            emit(Result.Error(error))
         }
     }
 }

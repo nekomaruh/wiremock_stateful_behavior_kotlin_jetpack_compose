@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 
-abstract class UseCase<P : Any, T>(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+abstract class BaseUseCaseFlow<P : Any, T>(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
     protected abstract suspend fun executeOnBackground(params: P? = null): Flow<T>
 

@@ -1,8 +1,6 @@
 package com.example.wiremock_stages_compose
 
 import android.app.Application
-import android.util.Log
-import com.example.wiremock_stages_compose.domain.di.apiModule
 import com.example.wiremock_stages_compose.domain.di.koinModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
