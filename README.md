@@ -3,7 +3,7 @@ Small example that helps to manage states from backend requests.
 
 # 👨‍💻 To run this project you should follow the next steps
 
-Step 1: Pre - Requirements (In case you want to apply them to your own projects)
+Step 1: Pre - Requirements (Not Needed)
 ------------------------------
 
 1. Make sure you have linked Wiremock as a dependency: https://wiremock.org/#open-source-get-started
