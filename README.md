@@ -44,11 +44,13 @@ The app is composed by 2 screens, Main Screen and Stage Screen:
 A UUID is auto-generated in Main Screen and then passed by arguments to Stage Screen to simulate a payment code.
 
 Stage Screen contains different states which the payment can go trough.
-STATE 1: Started
-STATE 2: Init
-STATE 3: Created
-STATE 4: Validated
-STATE 5: Authorized
+- STATE 1: Started
+- STATE 2: Init
+- STATE 3: Created
+- STATE 4: Validated
+- STATE 5: Authorized
+
+<img src="https://user-images.githubusercontent.com/42304227/216480732-c9cde727-7656-4015-aba1-fd5d2cb44cad.png" width="300">
 
 When user clicks `START PULL` button wiremocks will start to work as a state machine, getting the next possible states. Once finished last possible requested state attempt, pulling will stop as shown. You can see server requests in Logs as well.
 
