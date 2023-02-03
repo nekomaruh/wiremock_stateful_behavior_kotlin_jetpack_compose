@@ -25,7 +25,41 @@ git clone https://github.com/nekomaruh/wiremock_stateful_behavior_kotlin_jetpack
 Step 3: Build & Run Project
 -------------------------------
 
+Run Wiremock server with this command
+
+``bash
+sh wiremock/start-wiremock.sh
+```
+
 Run app with Android Studio
     
+    
+Explanation
+-------------------------------
+
+The app is composed by 2 screens, Main Screen and Stage Screen:
+
+![image](https://user-images.githubusercontent.com/42304227/216477991-dd2205f1-c2b9-4f6f-95e1-b056f8654003.png)
+
+A UUID is auto-generated in Main Screen and then passed by arguments to Stage Screen to simulate a payment code.
+
+Stage Screen contains different states which the payment can go trough.
+STATE 1: Started
+STATE 2: Init
+STATE 3: Created
+STATE 4: Validated
+STATE 5: Authorized
+
+![image](https://user-images.githubusercontent.com/42304227/216478408-b775cc51-9e7b-4b46-81cb-e668bd82814f.png)
+
+When user clicks `START PULL` button wiremocks will start to work as a state machine, getting the next possible states. Once finished last possible requested state attempt, pulling will stop as shown.
+
+![image](https://user-images.githubusercontent.com/42304227/216478724-b6e249a1-8ae3-4df2-9b4b-14264019cb64.png)
+
+You can see server requests in Logs as well.
+
+<img width="264" alt="Screen Shot 2023-02-02 at 21 06 20" src="https://user-images.githubusercontent.com/42304227/216478835-ab887a34-baef-462b-a15c-13747ae83724.png">
+
+You can stop pulling data with `RESET SCENARIO` button at any time you want.
 
 🥳 Congratulations!!, now you will have a local environment running with Wiremock!
