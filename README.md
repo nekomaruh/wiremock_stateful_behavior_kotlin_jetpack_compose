@@ -34,7 +34,7 @@ sh wiremock/start-wiremock.sh
 Run app with Android Studio
     
     
-Explanation
+Step 4: Explanation
 -------------------------------
 
 The app is composed by 2 screens, Main Screen and Stage Screen:
